@@ -30,10 +30,11 @@ public class IDRecommend {
             new_id  = new_id.replaceAll("[^0-9a-z-_.]","");
 
             // 연속된.을 .하나로 바꿔
-            new_id = new_id.replaceAll(todo);
+            new_id = new_id.replaceAll("\\.{2,}", ".");
 
             // 첨과 끝 . 안돼
-            new_id = new_id.replaceAll(todo);
+            new_id = new_id.replaceAll("^[.]", "");
+            new_id = new_id.replaceAll("[.]$", "");
 
             // 빈 문자열이야 그럼 a 넣어
             if(new_id.length() == 0){
@@ -44,7 +45,7 @@ public class IDRecommend {
             // 근데 제거를 했는데 마지막이 .이야 제거  replaceAll 쓰자는거잖아.
             if(new_id.length() > 15){
                 new_id = new_id.substring(0,15);
-                new_id = new_id.replaceAll(todo,"");
+                new_id = new_id.replaceAll("[.]$","");
             }
 
             // 3자 미만이야 그럼 마지막 문자 반복하자
